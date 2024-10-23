@@ -1,6 +1,7 @@
 package com.github.williammendesd.FilmesReview.dto;
 
 
+import com.github.williammendesd.FilmesReview.model.Filme;
 import com.github.williammendesd.FilmesReview.model.Genero;
 import com.github.williammendesd.FilmesReview.model.Review;
 import jakarta.persistence.*;
@@ -31,8 +32,16 @@ public class FilmeDTO {
     @NotNull(message = "Campo requerido")
     private Integer ano;
 
-    private List<Review> reviews = new ArrayList<>();
+//    private List<ReviewDTO> reviews = new ArrayList<>();
 
     @NotBlank(message = "Campo requerido")
     private Genero genero;
+
+    public FilmeDTO(Filme entity) {
+        this.id = entity.getId();
+        this.titulo = entity.getTitulo();
+        this.ano = entity.getAno();
+        this.genero = entity.getGenero();
+//        entity.getReviews().forEach(review -> reviews.add(new ReviewDTO(review)));
+    }
 }
